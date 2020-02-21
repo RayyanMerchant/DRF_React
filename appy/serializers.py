@@ -9,4 +9,9 @@ class PostSerializer(serializers.ModelSerializer):
 class CalcSerializer(serializers.ModelSerializer):
     class Meta:
         model = Calc
-        fields = '__all__'
+        fields = (
+            'newid',
+            'num1',
+            'num2',
+            'result',
+        )

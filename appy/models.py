@@ -8,5 +8,8 @@ class Post(models.Model):
 class Calc(models.Model):
     num1 = models.IntegerField()
     num2 = models.IntegerField()
+    newid = models.IntegerField()
+    result = models.IntegerField()
     def __str__(self):
         return str(self.num1) + " + " + str(self.num2)
+

@@ -12,4 +12,5 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     authentication_classes = (TokenAuthentication,)
 
-
+class Test:
+    pass

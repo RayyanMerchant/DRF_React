@@ -4,3 +4,18 @@ C:\Users\RayyanMerchant\AppData\Local\Programs\Python\Python37-32\python.exe
 
 
 
+GET and POST request using python requests
+https://www.geeksforgeeks.org/get-post-requests-using-python/
+https://realpython.com/python-requests/
+
+
+
+
+
+
+
+
+
+
+
+

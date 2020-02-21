@@ -18,15 +18,10 @@ class PostViewSet(viewsets.ModelViewSet):
 
 @api_view(['GET', 'POST'])
 def CalcView(request):
-    """
-    List all code snippets, or create a new snippet.
-    """
-    
     if request.method == 'GET':
-        calcs = Calc.objects.last()
-        serializer = CalcSerializer(data=calcs)
-        if(serializer.is_valid()):
-            return Response(serializer.data)
+        calcs = Calc.objects.all()
+        serializer = CalcSerializer(calcs, many=True)
+        return Response(serializer.data)
 
     elif request.method == 'POST':
         serializer = CalcSerializer(data=request.data)
@@ -40,8 +35,6 @@ def CalcView(request):
             obj.save()
             newdic = serializer.data
             newdic['result'] = res
-            print(res)
-            print(newdic)
             return Response(newdic, status=status.HTTP_201_CREATED)
 
 

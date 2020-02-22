@@ -37,8 +37,8 @@ python manage.py runserver
 
 
 
-
-
+The django request.data item is a QueryDict read more about it here : 
+https://kite.com/python/docs/django.http.QueryDict
 
 
 

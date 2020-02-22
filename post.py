@@ -2,15 +2,14 @@ import requests
 import random 
 import time
 # import json
-API_ENDPOINT = "http://localhost:8000/api/calc/"
+API_ENDPOINT = "http://localhost:8000/api/assignment/"
 
 
 # data to be sent to api 
 data = {
-	'result':-500, 
-	'num1':random.randint(1, 1000), 
-	'num2':random.randint(1, 1000), 
-	'newid':int(time.time()),
+	'task':'task no : ' + str(random.randint(1, 100)), 
+	'content' : 'this is some stupid content',
+	'submission_date':'29/04/2019',
 } 
 
 # sending post request and saving response as response object 

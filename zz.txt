@@ -15,6 +15,41 @@ https://realpython.com/python-requests/
 
 
 
+https://stackoverflow.com/questions/30911612/how-can-i-set-a-datefield-format-in-django-from-the-model
+
+
+
+submission_date = models.DateField(input_formats=settings.DATE_INPUT_FORMATS)
+
+
+
+python manage.py makemigrations appy
+python manage.py migrate
+python manage.py createsuperuser
+test
+test@test.com
+test
+test
+y
+python manage.py runserver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

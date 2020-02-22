@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from .views import PostViewSet, CalcView
+from .views import PostViewSet, CalcView, AssignmentView
 from rest_framework.urlpatterns import format_suffix_patterns
 # router = routers.DefaultRouter()
 # router.register('api/post', PostViewSet, 'post')
@@ -9,5 +9,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 # urlpatterns = router.urls
 
 urlpatterns = format_suffix_patterns([
-    path('api/calc/', CalcView, name='calc-view')
+    path('api/calc/', CalcView, name='calc-view'),
+    path('api/assignment/', AssignmentView, name='assignment-view'),
 ])

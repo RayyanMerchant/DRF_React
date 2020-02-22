@@ -22,30 +22,34 @@ import random
 # } 
 
 
-# API_ENDPOINT = "https://places.sit.ls.hereapi.com/places/v1/autosuggest"
-
-# data = {
-	# 'apiKey' : 'hnxn-hc6r876FaoJIkHqp1ci8DsLAe4yKllYAPPGMGo',
-	# 'at' : '40.74917,-73.98529',
-	# 'q' : 'chrysler',
-# } 
-
-API_ENDPOINT =  "https://geocoder.ls.hereapi.com/6.2/geocode.json"
+API_ENDPOINT = "https://places.sit.ls.hereapi.com/places/v1/autosuggest"
 
 data = {
 	'apiKey' : 'hnxn-hc6r876FaoJIkHqp1ci8DsLAe4yKllYAPPGMGo',
-	'searchtext' : 'dadar mumbai',
+	'at' : '19.1136,72.8697',
+	'q' : 'hostel',
 } 
+
+# API_ENDPOINT =  "https://geocoder.ls.hereapi.com/6.2/geocode.json"
+
+# data = {
+	# 'apiKey' : 'hnxn-hc6r876FaoJIkHqp1ci8DsLAe4yKllYAPPGMGo',
+	# 'searchtext' : 'dadar mumbai',
+# } 
 
 
 r = requests.get(url = API_ENDPOINT, params = data) 
 
 response = r.json()
-lat = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude']
-long = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude']
-print("Latitude = ", lat)
-print("Longitude = ", long)
-print(lat, long)
+
+
+# lat = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude']
+# long = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude']
+# print("Latitude = ", lat)
+# print("Longitude = ", long)
+# print(lat, long)
+
+
 print("staus code is : ", r.status_code)
 print("The response is:%s"%response) 
 

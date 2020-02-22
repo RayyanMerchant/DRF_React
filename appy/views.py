@@ -28,9 +28,9 @@ def TeacherCorrectView(request):
         return Response({"a" : "s"}, status.status.HTTP_201_CREATED)        
 
 
-@api_view(['POST', ])
+@api_view(['GET', ])
 def TeacherLeftView(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         left_correct = Assignments.objects.filter(done=True, is_corrected=False)
         serializer = AssignmentSerializer(left_correct, many=True)
         return Response(serializer.data, status.status.HTTP_201_CREATED)

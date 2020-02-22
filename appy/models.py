@@ -16,6 +16,7 @@ class Assignment(models.Model):
     submission_date = models.CharField(max_length=200)
     student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True, blank=True)
     done = models.BooleanField(default=False)
+    ans = models.CharField(max_length=1000, default="default ans")
     def __str__(self):
         return self.task + " " + self.student.name
 

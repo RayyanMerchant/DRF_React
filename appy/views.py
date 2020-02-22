@@ -16,6 +16,17 @@ def HostelView(request):
         print(request.data)
         return Response({"a" : "A"}, status=status.HTTP_201_CREATED)
 
+@api_view(['POST', ])
+def AssignmentAnsView(request):
+    if request.method == 'POST':
+        ans = request.data.__getitem__('ans')
+        id = request.data.__getitem__('id')
+        obj = Assignment.objects.filter(id=id).first()
+        obj.ans = ans
+        obj.done = True
+        obj.save()
+        return Response({"ans" : ans, "task" : obj.task}, status=status.HTTP_201_CREATED)
+
 @api_view(['POST'],)
 def AssignmentIDView(request):
     if request.method == 'POST':

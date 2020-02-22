@@ -17,11 +17,17 @@ import time
 # } 
 
 
-API_ENDPOINT = "http://localhost:8000/api/assignment/"
+# API_ENDPOINT = "http://localhost:8000/api/assignment/"
+# data = {
+	# 'task' : 'task no : ' + str(random.randint(1, 1000)),
+	# 'content' : 'this is some default content',
+	# 'submission_date' : '03/10/2009',
+# } 
+
+API_ENDPOINT = "http://localhost:8000/api/assignment_ans/"
 data = {
-	'task' : 'task no : ' + str(random.randint(1, 1000)),
-	'content' : 'this is some default content',
-	'submission_date' : '03/10/2009',
+	'ans' : 'this is a new ans',
+	'id' : '3',
 } 
 
 # sending post request and saving response as response object 

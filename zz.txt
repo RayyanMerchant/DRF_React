@@ -35,7 +35,9 @@ python manage.py runserver
 
 
 
-
+forces pull deletes all local changes no merge is possible
+git reset --hard origin/master
+git pull
 
 The django request.data item is a QueryDict read more about it here : 
 https://kite.com/python/docs/django.http.QueryDict

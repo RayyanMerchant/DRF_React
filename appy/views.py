@@ -42,7 +42,8 @@ def TeacherLeftView(request):
             i['name'] = student.name
             print(i)
         ss = json.dumps(serialized_data)
-        
+        ss = json.loads(ss)
+        print(type(ss))
         return Response(ss, status=status.HTTP_201_CREATED)
 
 @api_view(['POST', ])

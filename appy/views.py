@@ -89,8 +89,6 @@ def AssignmentAnsView(request):
 def AssignmentIDView(request):
     if request.method == 'POST':
         id = request.data.__getitem__('id')
-        if id.startswith("correct"):
-            id = int(id[len(prefix):])
         req_assignment = Assignment.objects.filter(id=id).first()
         serializer = AssignmentSerializer(req_assignment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)

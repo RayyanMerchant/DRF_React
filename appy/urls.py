@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from .views import AssignmentView, PendingTaskView
+from .views import AssignmentView, PendingTaskView, HostelView
 from rest_framework.urlpatterns import format_suffix_patterns
 # router = routers.DefaultRouter()
 # router.register('api/post', PostViewSet, 'post')
@@ -11,4 +11,5 @@ from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = format_suffix_patterns([
     path('api/assignment/', AssignmentView, name='assignment-view'),
     path('api/pending_task/', PendingTaskView, name='pending-task'),
+    path('api/hostels/', HostelView, name='hotel-view'),
 ])

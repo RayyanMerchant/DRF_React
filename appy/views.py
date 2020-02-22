@@ -9,6 +9,13 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 import json
 
+
+@api_view(['POST', ])
+def HostelView(request):
+    if request.method == 'POST':
+        print(request.data)
+        return Response({"a" : "A"}, status=status.HTTP_201_CREATED)
+
 @api_view(['POST',])
 def PendingTaskView(request):
     if request.method == 'POST':

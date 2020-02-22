@@ -16,6 +16,7 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     authentication_classes = (TokenAuthentication,)
 
+
 @api_view(['GET', 'POST'])
 def CalcView(request):
     if request.method == 'GET':

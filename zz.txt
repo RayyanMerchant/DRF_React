@@ -1,5 +1,10 @@
 
 
+To activate venv :
+
+C:\Users\RayyanMerchant\Desktop\New\ReactDRF\venv\Scripts\activate
+
+
 C:\Users\RayyanMerchant\AppData\Local\Programs\Python\Python37-32\python.exe
 
 

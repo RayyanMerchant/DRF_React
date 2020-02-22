@@ -8,20 +8,41 @@ from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 import json
-
+import requests
 
 @api_view(['POST', ])
 def HostelView(request):
     if request.method == 'POST':
-        print(request.data)
-        return Response({"a" : "A"}, status=status.HTTP_201_CREATED)
+        query = request.data.__getitem__('str')
+        API_ENDPOINT =  "https://geocoder.ls.hereapi.com/6.2/geocode.json"
+        data = {
+            'apiKey' : 'hnxn-hc6r876FaoJIkHqp1ci8DsLAe4yKllYAPPGMGo',
+            'searchtext' : 'dadar mumbai',
+        } 
+        r = requests.get(url = API_ENDPOINT, params = data) 
+        response = r.json()
+        lat = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude']
+        lon = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude']
+        print("Latitude = ", lat)
+        print("Longitude = ", lon)
+        print(lat, lon)
+
+        API_ENDPOINT = "https://places.sit.ls.hereapi.com/places/v1/autosuggest"
+        data = {
+            'apiKey' : 'hnxn-hc6r876FaoJIkHqp1ci8DsLAe4yKllYAPPGMGo',
+            'at' : str(lat) + "," + str(lon),
+            'q' : 'hostel',
+        } 
+        r = requests.get(url = API_ENDPOINT, params = data) 
+        response = r.json()
+        return Response(response, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', ])
 def MarksListView(request):
     if request.method == 'GET':
         qs = Assignment.objects.filter(done=True, is_corrected=True)
         serializer = AssignmentSerializer(qs, many=True)
-        return Response(serializer, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['POST', ])
 def TeacherCorrectView(request):

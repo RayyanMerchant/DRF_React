@@ -25,16 +25,13 @@ import time
 # } 
 
 
-# API_ENDPOINT = "http://localhost:8000/api/assignment_ans/"
-# data = {
-	# 'ans' : 'this is a new ans',
-	# 'id' : '3',
-# } 
+API_ENDPOINT = "http://localhost:8000/api/hostels/"
+data = {
+	'str' : 'andheri mumbai',
+} 
 
-# sending post request and saving response as response object 
 r = requests.post(url = API_ENDPOINT, data = data) 
 
-# extracting response json  
 response = r.json()
 print("staus code is : ", r.status_code)
 print("The response is:%s"%response) 

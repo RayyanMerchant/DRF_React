@@ -38,9 +38,9 @@ data = {
 # } 
 
 
-r = requests.get(url = API_ENDPOINT, params = data) 
+# r = requests.get(url = API_ENDPOINT, params = data) 
 
-response = r.json()
+# response = r.json()
 
 
 # lat = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude']

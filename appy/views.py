@@ -16,6 +16,13 @@ def HostelView(request):
         print(request.data)
         return Response({"a" : "A"}, status=status.HTTP_201_CREATED)
 
+@api_view(['GET', ])
+def MarksListView(request):
+    if request.method == 'GET':
+        qs = Assignment.objects.filter(done=True, is_corrected=True)
+        serializer = AssignmentSerializer(qs, many=True)
+        return Response(serializer, status=status.HTTP_201_CREATED)
+
 @api_view(['POST', ])
 def TeacherCorrectView(request):
     if request.method == 'POST':

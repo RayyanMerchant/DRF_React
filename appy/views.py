@@ -16,6 +16,14 @@ def HostelView(request):
         print(request.data)
         return Response({"a" : "A"}, status=status.HTTP_201_CREATED)
 
+@api_view(['POST'],)
+def AssignmentIDView(request):
+    if request.method == 'POST':
+        id = request.data.__getitem__('id')
+        req_assignment = Assignment.objects.filter(id=id).first()
+        serializer = AssignmentSerializer(req_assignment)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 @api_view(['POST','GET',])
 def PendingTaskView(request):
     if request.method == 'POST':
@@ -26,11 +34,7 @@ def PendingTaskView(request):
         pending_assignment = Assignment.objects.filter(student=cur_student, done=False)
         serializer = AssignmentSerializer(pending_assignment, many=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    elif request.method == 'GET':
-        id = request.data.__getitem__('id')
-        req_assignment = Assignment.objects.filter(id=id).first()
-        serializer = AssignmentSerializer(req_assignment)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 
 @api_view(['POST'])

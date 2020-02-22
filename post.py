@@ -5,11 +5,17 @@ import time
 
 
 
-API_ENDPOINT = "http://localhost:8000/api/pending_task/"
-data = {
-	'email' : 'sad@sade.com',
-} 
+# API_ENDPOINT = "http://localhost:8000/api/pending_task/"
+# data = {
+	# 'email' : 'sad@sade.com',
+# } 
 
+API_ENDPOINT = "http://localhost:8000/api/assignment_id/"
+
+
+data = {
+	'id' : '5',
+} 
 
 
 # API_ENDPOINT = "http://localhost:8000/api/assignment/"

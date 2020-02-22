@@ -79,7 +79,7 @@ def AssignmentAnsView(request):
     if request.method == 'POST':
         ans = request.data.__getitem__('ans')
         id = request.data.__getitem__('id')
-        obj = Assignment.objects.filter(id=id).first()
+        obj = Assignment.objects.get(id=id)
         obj.ans = ans
         obj.done = True
         obj.save()

@@ -42,7 +42,8 @@ https://kite.com/python/docs/django.http.QueryDict
 
 
 
-
+Here Maps API Key : 
+hnxn-hc6r876FaoJIkHqp1ci8DsLAe4yKllYAPPGMGo
 
 
 

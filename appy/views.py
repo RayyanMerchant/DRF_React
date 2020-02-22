@@ -25,15 +25,25 @@ def TeacherCorrectView(request):
         cur_assignment.marks = marks
         cur_assignment.is_corrected = True
         cur_assignment.save()
-        return Response({"a" : "s"}, status.status.HTTP_201_CREATED)        
+        return Response({"a" : "s"}, status=status.HTTP_201_CREATED)        
 
 
 @api_view(['GET', ])
 def TeacherLeftView(request):
     if request.method == 'GET':
-        left_correct = Assignments.objects.filter(done=True, is_corrected=False)
+        left_correct = Assignment.objects.filter(done=True, is_corrected=False)
         serializer = AssignmentSerializer(left_correct, many=True)
-        return Response(serializer.data, status.status.HTTP_201_CREATED)
+        serialized_data =  {'data': serializer.data}
+        serialized_data = serialized_data['data']
+        
+        for i in serialized_data:
+            id = i['student']
+            student = Student.objects.filter(id=id).first()
+            i['name'] = student.name
+            print(i)
+        ss = json.dumps(serialized_data)
+        
+        return Response(ss, status=status.HTTP_201_CREATED)
 
 @api_view(['POST', ])
 def AssignmentAnsView(request):

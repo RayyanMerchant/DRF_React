@@ -24,11 +24,12 @@ import time
 	# 'submission_date' : '03/10/2009',
 # } 
 
-API_ENDPOINT = "http://localhost:8000/api/assignment_ans/"
-data = {
-	'ans' : 'this is a new ans',
-	'id' : '3',
-} 
+
+# API_ENDPOINT = "http://localhost:8000/api/assignment_ans/"
+# data = {
+	# 'ans' : 'this is a new ans',
+	# 'id' : '3',
+# } 
 
 # sending post request and saving response as response object 
 r = requests.post(url = API_ENDPOINT, data = data) 

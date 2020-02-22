@@ -17,6 +17,25 @@ def HostelView(request):
         return Response({"a" : "A"}, status=status.HTTP_201_CREATED)
 
 @api_view(['POST', ])
+def TeacherCorrectView(request):
+    if request.method == 'POST':
+        marks = request.data.__getitem__('marks')
+        id = request.data.__getitem__('id')
+        cur_assignment = Assignment.objects.filter(id=id).first()
+        cur_assignment.marks = marks
+        cur_assignment.is_corrected = True
+        cur_assignment.save()
+        return Response({"a" : "s"}, status.status.HTTP_201_CREATED)        
+
+
+@api_view(['POST', ])
+def TeacherLeftView(request):
+    if request.method == 'POST':
+        left_correct = Assignments.objects.filter(done=True, is_corrected=False)
+        serializer = AssignmentSerializer(left_correct, many=True)
+        return Response(serializer.data, status.status.HTTP_201_CREATED)
+
+@api_view(['POST', ])
 def AssignmentAnsView(request):
     if request.method == 'POST':
         ans = request.data.__getitem__('ans')

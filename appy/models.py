@@ -17,6 +17,8 @@ class Assignment(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True, blank=True)
     done = models.BooleanField(default=False)
     ans = models.CharField(max_length=1000, default="default ans")
+    is_corrected = models.BooleanField(default=False)
+    marks = models.IntegerField(default=-1)
     def __str__(self):
         return self.task + " " + self.student.name
 

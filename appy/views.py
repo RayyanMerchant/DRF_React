@@ -49,7 +49,7 @@ def HostelView(request):
             print(cur)
             if contains_word(cur):
                 lst.append(cur)
-        return Response(response, status=status.HTTP_201_CREATED)
+        return Response(lst, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', ])
 def MarksListView(request):

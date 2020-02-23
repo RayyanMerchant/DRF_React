@@ -10,6 +10,11 @@ from rest_framework import status
 import json
 import requests
 
+
+def contains_word(s):
+    s = s.lower()
+    return (' ' + 'hostel' + ' ') in (' ' + s + ' ') or (' ' + 'hostels' + ' ') in (' ' + s + ' ')
+
 @api_view(['POST', ])
 def HostelView(request):
     if request.method == 'POST':
@@ -41,8 +46,10 @@ def HostelView(request):
             cur = i['highlightedTitle']
             cur = cur.replace('<b>', '')
             cur = cur.replace('</b>', '')
-            lst.append(cur)
-        return Response(lst, status=status.HTTP_201_CREATED)
+            print(cur)
+            if contains_word(cur):
+                lst.append(cur)
+        return Response(response, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', ])
 def MarksListView(request):

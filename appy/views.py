@@ -22,12 +22,13 @@ def HostelView(request):
         API_ENDPOINT =  "https://geocoder.ls.hereapi.com/6.2/geocode.json"
         data = {
             'apiKey' : 'hnxn-hc6r876FaoJIkHqp1ci8DsLAe4yKllYAPPGMGo',
-            'searchtext' : 'dadar mumbai',
+            'searchtext' : query,
         } 
         r = requests.get(url = API_ENDPOINT, params = data) 
         response = r.json()
         lat = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Latitude']
         lon = response['Response']['View'][0]['Result'][0]['Location']['DisplayPosition']['Longitude']
+        print
         print("Latitude = ", lat)
         print("Longitude = ", lon)
         print(lat, lon)
@@ -42,14 +43,32 @@ def HostelView(request):
         response = r.json()
         response = response['results']
         lst = []
+        diclst = []
         for i in response:
             cur = i['highlightedTitle']
             cur = cur.replace('<b>', '')
             cur = cur.replace('</b>', '')
             print(cur)
             if contains_word(cur):
+                print(cur)
+                if 'position' in i:
+                    print("i['position'] : ", i['position'])
+                    lat = i['position'][0]
+                    lon = i['position'][1]
+                    print(lat, lon)
+                    diclst.append({
+                        'lat' : lat,
+                        'lon' : lon,
+                        'name' : cur,
+                    })
                 lst.append(cur)
-        return Response(lst, status=status.HTTP_201_CREATED)
+                
+                print('\n\n\n')
+        # print("diclist", diclst)
+        js = json.dumps(diclst)
+        js = json.loads(js)
+        print(js, type(js))
+        return Response(js, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', ])
 def MarksListView(request):

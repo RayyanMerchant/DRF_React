@@ -27,7 +27,7 @@ import time
 
 API_ENDPOINT = "http://localhost:8000/api/hostels/"
 data = {
-	'str' : 'andheri mumbai',
+	'str' : 'Dadar Mumbai',
 } 
 
 r = requests.post(url = API_ENDPOINT, data = data) 

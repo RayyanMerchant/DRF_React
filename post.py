@@ -33,7 +33,8 @@ data = {
 r = requests.post(url = API_ENDPOINT, data = data) 
 
 response = r.json()
-print("staus code is : ", r.status_code)
+
+
 print("The response is:%s"%response) 
 
 

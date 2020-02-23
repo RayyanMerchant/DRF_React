@@ -35,7 +35,14 @@ def HostelView(request):
         } 
         r = requests.get(url = API_ENDPOINT, params = data) 
         response = r.json()
-        return Response(response, status=status.HTTP_201_CREATED)
+        response = response['results']
+        lst = []
+        for i in response:
+            cur = i['highlightedTitle']
+            cur = cur.replace('<b>', '')
+            cur = cur.replace('</b>', '')
+            lst.append(cur)
+        return Response(lst, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', ])
 def MarksListView(request):
